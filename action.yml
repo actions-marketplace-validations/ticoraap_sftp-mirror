@@ -1,8 +1,8 @@
-name: "sftp mirror"
+name: "SFTP mirror"
 description: "mirror local dir to remote"
 branding:
   icon: upload-cloud
-  color: gray-dark
+  color: purple
 runs:
   using: "docker"
   image: "Dockerfile"

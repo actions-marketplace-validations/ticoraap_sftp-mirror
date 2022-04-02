@@ -19,11 +19,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: SFTP mirror
-        uses: verbindingsfout/sftp-sync-action@v1.0
+        uses: verbindingsfout/sftp-sync-action@v1.1
         with:
-          server: my-ssh-server.com
-          user: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
+          server: ${{ secrets.SFTP_HOST }}
+          user: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
           local: /out
-          remote: /www
+          remote: ${{ secrets.SFTP_STAGING_LOCATION }}
 ```
