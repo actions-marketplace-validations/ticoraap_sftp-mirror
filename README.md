@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: SFTP mirror
-        uses: verbindingsfout/sftp-sync-action@v1.1
+        uses: verbindingsfout/sftp-mirror@v1.1
         with:
           server: ${{ secrets.SFTP_HOST }}
           user: ${{ secrets.SFTP_USERNAME }}
