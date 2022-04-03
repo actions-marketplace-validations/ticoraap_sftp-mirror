@@ -1,9 +1,6 @@
-FROM alpine
+FROM alpine:3.13
 
-RUN apk update && \
-    apk upgrade && \
-    apk add lftp && \
-    rm -rf /var/cache/apk/*
+RUN apk add openssh-client lftp
 
 COPY entrypoint.sh /entrypoint.sh
 

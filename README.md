@@ -1,10 +1,12 @@
-# SFTP mirror
+# TransIP SFTP mirror
+
+Unofficial TransIP SFTP mirror.
 
 Uses [lftp](https://lftp.yar.ru/) to mirror a local directory to a SFTP server using username/password authentication.
 
 Can be used for mirroring to TransIP webhosting.
 
-**Be warned** this action deletes anything in remote directory that is not in the local directory 
+**Be warned** this action deletes anything in the remote directory that is not in the local directory 
 
 ## Example
 
@@ -19,11 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: SFTP mirror
-        uses: verbindingsfout/sftp-mirror@v1.3
+        uses: verbindingsfout/sftp-mirror@v1.4
         with:
           server: server.com
           user: username
+          port: 22
           password: ${{ secrets.PASSWORD }}
-          local: /out
+          local: ./out
           remote: /var/www
 ```
