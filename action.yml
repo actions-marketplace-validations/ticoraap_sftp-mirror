@@ -1,5 +1,5 @@
-name: "SFTP mirror"
-description: "mirror local dir to remote"
+name: "SFTP deploy"
+description: "Username/password auth. Mirror a local directory to server"
 branding:
   icon: upload-cloud
   color: purple
@@ -23,8 +23,8 @@ inputs:
   local:
     description: "Local path to sync (default: .)"
     required: false
-    default: .
+    default: ./
   remote:
     description: "Path on server (default: .)"
     required: false
-    default: .
+    default: ./

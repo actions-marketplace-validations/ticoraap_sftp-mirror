@@ -1,16 +1,12 @@
-# SFTP mirror
+# SFTP deploy
 
-## Mirror a local directory to a remoteserver directory with SFTP
+## username/password. Mirror a local directory to server
 
+* Deletes files not present at the source
 * Uses [lftp](https://lftp.yar.ru/) to send files with username/password authentication.
-* Intentionally autoconfirms the servers host key
-* Deletes files not present at the source*
+* Autoconfirms the servers host key
 
 
-
-
-## *Deletes files not present at the source
-By design this action deletes files not present at the source, this is helpful if you deploy a static website where you want the old documents to be removed, if you don't want this then you should search for something else or commit to a PR.
 
 ## Example usage
 
@@ -25,14 +21,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: SFTP mirror
-        uses: verbindingsfout/sftp-mirror@v1.5
+        uses: verbindingsfout/sftp-mirror@v1.6
         with:
           server: server.com
           user: username
           password: ${{ secrets.PASSWORD }}
-          remote: /var/www
-
-          # optional default values:
           port: 22
-          local: .
+          local: ./out/
+          remote: /www/
+
 ```
+| Key Name                | Required | Example                       | Default | Description                                                            |
+|-------------------------|----------|-------------------------------|---------|------------------------------------------------------------------------|
+| `server`                | Yes      | `ftp.example.com`             |         | Deployment destination server                                          |
+| `user`                  | Yes      | `user@example.com`            |         | SFTP user name                                                         |
+| `password`              | Yes      | `abc123`                      |         | SFTP password                                                          |
+| `port`                  | No       | `2222`                        | `22`    | Server port to connect to (read your web hosts docs)                   |
+| `local`                 | No       | `./out/`                      | `./`    | Folder to upload from, must end with trailing slash `/`                |
+| `remote`                | No       | `/www/`                       | `./`    | Folder to upload to (on the server), must end with trailing slash `/`  |
+
