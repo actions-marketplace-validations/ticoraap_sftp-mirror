@@ -1,4 +1,4 @@
-name: "SFTP deploy"
+name: "SFTP deploy/mirror"
 description: "Username/password auth. Mirror a local directory to server"
 branding:
   icon: upload-cloud
